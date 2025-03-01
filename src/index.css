@@ -1,0 +1,183 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 10%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 10%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 10%;
+
+    --primary: 0 0% 9%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 0 0% 96%;
+    --secondary-foreground: 0 0% 10%;
+
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 40%;
+
+    --accent: 0 0% 94%;
+    --accent-foreground: 0 0% 10%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 92%;
+    --input: 0 0% 92%;
+    --ring: 0 0% 82%;
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  /* Glass effect utility class */
+  .glass-effect {
+    @apply bg-white/70 backdrop-blur-md border border-white/20 shadow-sm;
+  }
+  
+  /* Card hover effect */
+  .hover-lift {
+    @apply transition-all duration-300;
+  }
+  
+  .hover-lift:hover {
+    @apply -translate-y-1 shadow-lg;
+  }
+  
+  /* Animations */
+  .animate-reveal {
+    @apply opacity-0;
+    animation: reveal 0.8s forwards;
+  }
+  
+  @keyframes reveal {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Staggered animation delays */
+  .delay-1 {
+    animation-delay: 0.1s;
+  }
+  
+  .delay-2 {
+    animation-delay: 0.2s;
+  }
+  
+  .delay-3 {
+    animation-delay: 0.3s;
+  }
+  
+  .delay-4 {
+    animation-delay: 0.4s;
+  }
+  
+  /* Button animation */
+  .btn-pulse {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .btn-pulse::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 5px;
+    height: 5px;
+    background: rgba(255, 255, 255, 0.4);
+    opacity: 0;
+    border-radius: 100%;
+    transform: scale(1, 1) translate(-50%, -50%);
+    transform-origin: 50% 50%;
+  }
+  
+  .btn-pulse:hover::after {
+    animation: ripple 1s ease-out;
+  }
+  
+  @keyframes ripple {
+    0% {
+      transform: scale(0, 0);
+      opacity: 0.5;
+    }
+    100% {
+      transform: scale(50, 50);
+      opacity: 0;
+    }
+  }
+  
+  /* Spreadsheet specific styles */
+  .cell-selected {
+    @apply outline outline-1 outline-blue-500 bg-blue-50;
+  }
+  
+  .cell-focused {
+    @apply outline outline-2 outline-blue-600;
+  }
+  
+  .toolbar-button {
+    @apply p-1 rounded hover:bg-neutral-200 transition-colors;
+  }
+  
+  .worksheet-tab {
+    @apply px-4 py-1 border-r border-t border-l border-neutral-300 rounded-t-md bg-white hover:bg-neutral-50 cursor-pointer;
+  }
+  
+  .worksheet-tab-active {
+    @apply bg-white font-semibold;
+  }
+  
+  /* Formula bar */
+  .formula-bar {
+    @apply border border-neutral-300 p-1 bg-white text-sm w-full;
+  }
+  
+  /* Function menu */
+  .function-menu {
+    @apply bg-white shadow-lg rounded-md border border-neutral-300 w-64 max-h-96 overflow-y-auto;
+  }
+  
+  .function-menu-item {
+    @apply px-3 py-2 hover:bg-blue-50 cursor-pointer border-b border-neutral-100;
+  }
+  
+  .function-menu-category {
+    @apply px-3 py-1 bg-neutral-100 font-semibold text-sm text-neutral-700;
+  }
+}
